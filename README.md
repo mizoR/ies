@@ -1,28 +1,18 @@
-# Ies
+# ies - Intaractive Elasticsearch
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ies`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+![image](https://cloud.githubusercontent.com/assets/1257116/16356689/8f2bc25c-3b1c-11e6-9a72-e8fc6e2c99de.png)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ies'
+gem 'ies', github: 'mizoR/ies'
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install ies
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
@@ -32,7 +22,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ies.
+Bug reports and pull requests are welcome on GitHub at https://github.com/mizoR/ies.
 
 
 ## License
