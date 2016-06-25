@@ -18,6 +18,15 @@ Or install it yourself as:
 
     $ gem install ies
 
+## Usage
+
+You can access the REPL for Elasticsearch Ruby by running `ies` from the command line.
+
+```rb
+$ ELASTICSEARCH_URL=localhost:9250 ies
+ies> search index: 'index_name', q: 'keyword'
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
