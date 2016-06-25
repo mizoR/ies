@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+root = File.dirname(File.dirname(__FILE__))
+$:.unshift(File.join(root, 'lib'))
+
+require 'rubygems'
+require 'optparse'
+require 'elasticsearch'
+require 'pry'
+
+Pry.config.prompt = [proc { "Ies> " }, proc { "Ies| " }]
+Elasticsearch::Client.new(log: true).pry
