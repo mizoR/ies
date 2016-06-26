@@ -8,5 +8,53 @@ require 'optparse'
 require 'elasticsearch'
 require 'pry'
 
+options = {
+  url:     nil,
+  log:     false,
+  require: [],
+  execute: [],
+}
+
+OptionParser.new do |opts|
+  opts.banner = 'Usage: ies [options]'
+
+  opts.on("--url URL", "elasticsearch's URLs that are separated with comma. (Default: ENV['ELASTICSEARCH_URL])") do |value|
+    options[:url] = value
+  end
+
+  opts.on("-l", "--log", "log client requets. (Default: #{options[:log]})") do |value|
+    options[:log] = value
+  end
+
+  opts.on("-e COMMAND", "--execute COMMAND", "one line of script. Several -e's allowed.") do |value|
+    options[:execute] << value
+  end
+
+  opts.on("-r LIBRARY", "--require LIBRARY", "require the library") do |values|
+    options[:require] << values
+  end
+
+  opts.on("-h", "--help") do
+    puts opts
+    exit
+  end
+end.parse!
+
+options[:require].each do |library|
+  require library
+end
+
+client_opts = {}
+client_opts[:log] = options[:log]
+client_opts[:url] = options[:url] if options[:url]
+
+client = Elasticsearch::Client.new(client_opts)
+
+if !options[:execute].empty?
+  scripts = options[:execute].join("\n")
+  client.instance_eval(scripts)
+  exit
+end
+
 Pry.config.prompt = [proc { "ies> " }, proc { "ies| " }]
-Elasticsearch::Client.new(log: true).pry
+client.pry

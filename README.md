@@ -23,7 +23,7 @@ Or install it yourself as:
 You can access the REPL for Elasticsearch Ruby by running `ies` from the command line.
 
 ```rb
-$ ELASTICSEARCH_URL=localhost:9250 ies
+$ ies
 ies> search index: 'index_name', q: 'keyword'
 ```
 
